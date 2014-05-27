@@ -1,0 +1,119 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 353
+  ClientWidth = 635
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Memo1: TMemo
+    Left = 8
+    Top = 8
+    Width = 337
+    Height = 283
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 297
+    Width = 75
+    Height = 25
+    Caption = 'online'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object ConnButton: TButton
+    Left = 270
+    Top = 297
+    Width = 75
+    Height = 25
+    Caption = 'Connect'
+    TabOrder = 2
+    OnClick = ConnButtonClick
+  end
+  object PortButton: TButton
+    Left = 189
+    Top = 297
+    Width = 75
+    Height = 25
+    Caption = 'Serial Port'
+    TabOrder = 3
+    OnClick = PortButtonClick
+  end
+  object Panel1: TPanel
+    Left = 351
+    Top = 8
+    Width = 276
+    Height = 283
+    TabOrder = 4
+    object Image1: TImage
+      Left = 1
+      Top = 1
+      Width = 274
+      Height = 281
+      Align = alClient
+      OnMouseDown = Image1MouseDown
+      OnMouseMove = Image1MouseMove
+      OnMouseUp = Image1MouseUp
+      ExplicitLeft = 48
+      ExplicitTop = 128
+      ExplicitWidth = 105
+      ExplicitHeight = 105
+    end
+  end
+  object Button2: TButton
+    Left = 552
+    Top = 297
+    Width = 75
+    Height = 25
+    Caption = 'Clear'
+    TabOrder = 5
+    OnClick = Button2Click
+  end
+  object IdHTTPServer1: TIdHTTPServer
+    Bindings = <>
+    DefaultPort = 88
+    OnCommandGet = IdHTTPServer1CommandGet
+    Left = 264
+    Top = 56
+  end
+  object ComPort: TComPort
+    BaudRate = br115200
+    Port = 'COM4'#0'anel'
+    Parity.Bits = prNone
+    StopBits = sbOneStopBit
+    DataBits = dbEight
+    DiscardNull = True
+    Events = [evRxChar, evTxEmpty, evRxFlag, evRing, evBreak, evCTS, evDSR, evError, evRLSD, evRx80Full]
+    FlowControl.OutCTSFlow = False
+    FlowControl.OutDSRFlow = False
+    FlowControl.ControlDTR = dtrEnable
+    FlowControl.ControlRTS = rtsDisable
+    FlowControl.XonXoffOut = False
+    FlowControl.XonXoffIn = False
+    StoredProps = [spBasic]
+    TriggersOnRxChar = True
+    OnAfterOpen = ComPortAfterOpen
+    OnAfterClose = ComPortAfterClose
+    OnRxChar = ComPortRxChar
+    Left = 264
+    Top = 120
+  end
+  object Timer1: TTimer
+    Interval = 25
+    OnTimer = Timer1Timer
+    Left = 264
+    Top = 216
+  end
+end

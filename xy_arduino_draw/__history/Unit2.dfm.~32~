@@ -1,0 +1,160 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Leonore Li Yan Yard'#305'ml'#305' Wang & Ekim Yard'#305'ml'#305' PenCNC'
+  ClientHeight = 663
+  ClientWidth = 959
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Memo1: TMemo
+    Left = 8
+    Top = 8
+    Width = 337
+    Height = 539
+    Lines.Strings = (
+      'Memo1')
+    ScrollBars = ssVertical
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 553
+    Width = 75
+    Height = 25
+    Caption = 'online'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object ConnButton: TButton
+    Left = 270
+    Top = 553
+    Width = 75
+    Height = 25
+    Caption = 'Connect'
+    TabOrder = 2
+    OnClick = ConnButtonClick
+  end
+  object PortButton: TButton
+    Left = 189
+    Top = 553
+    Width = 75
+    Height = 25
+    Caption = 'Serial Port'
+    TabOrder = 3
+    OnClick = PortButtonClick
+  end
+  object Panel1: TPanel
+    Left = 351
+    Top = 8
+    Width = 600
+    Height = 600
+    TabOrder = 4
+    object Image1: TImage
+      Left = 1
+      Top = 1
+      Width = 598
+      Height = 598
+      Align = alClient
+      OnMouseDown = Image1MouseDown
+      OnMouseMove = Image1MouseMove
+      OnMouseUp = Image1MouseUp
+      ExplicitWidth = 600
+    end
+  end
+  object Button2: TButton
+    Left = 271
+    Top = 582
+    Width = 75
+    Height = 25
+    Caption = 'Clear'
+    TabOrder = 5
+    OnClick = Button2Click
+  end
+  object CheckBox1: TCheckBox
+    Left = 8
+    Top = 584
+    Width = 97
+    Height = 17
+    Caption = 'Midi Generator'
+    TabOrder = 6
+    OnClick = CheckBox1Click
+  end
+  object MidiDeviceComboBox1: TMidiDeviceComboBox
+    Left = 8
+    Top = 607
+    Width = 145
+    Height = 21
+    AutoDropDown = True
+    Style = csDropDown
+    ItemIndex = 0
+    TabOrder = 7
+    Text = 'In From MIDI Yoke:  1'
+    OnChange = MidiDeviceComboBox1Change
+    Items.Strings = (
+      'In From MIDI Yoke:  1'
+      'In From MIDI Yoke:  2'
+      'In From MIDI Yoke:  3'
+      'In From MIDI Yoke:  4'
+      'In From MIDI Yoke:  5'
+      'In From MIDI Yoke:  6'
+      'In From MIDI Yoke:  7'
+      'In From MIDI Yoke:  8')
+  end
+  object ComboBox1: TComboBox
+    Left = 8
+    Top = 634
+    Width = 145
+    Height = 21
+    TabOrder = 8
+    Text = 'ComboBox1'
+  end
+  object IdHTTPServer1: TIdHTTPServer
+    Bindings = <>
+    DefaultPort = 88
+    OnCommandGet = IdHTTPServer1CommandGet
+    Left = 264
+    Top = 56
+  end
+  object ComPort: TComPort
+    BaudRate = br115200
+    Port = 'COM4'#0'anel'
+    Parity.Bits = prNone
+    StopBits = sbOneStopBit
+    DataBits = dbEight
+    DiscardNull = True
+    Events = [evRxChar, evTxEmpty, evRxFlag, evRing, evBreak, evCTS, evDSR, evError, evRLSD, evRx80Full]
+    FlowControl.OutCTSFlow = False
+    FlowControl.OutDSRFlow = False
+    FlowControl.ControlDTR = dtrEnable
+    FlowControl.ControlRTS = rtsDisable
+    FlowControl.XonXoffOut = False
+    FlowControl.XonXoffIn = False
+    StoredProps = [spBasic]
+    TriggersOnRxChar = True
+    OnAfterOpen = ComPortAfterOpen
+    OnAfterClose = ComPortAfterClose
+    OnRxChar = ComPortRxChar
+    Left = 264
+    Top = 120
+  end
+  object Timer1: TTimer
+    Interval = 50
+    OnTimer = Timer1Timer
+    Left = 264
+    Top = 216
+  end
+  object MidiOutput1: TMidiOutput
+    Left = 264
+    Top = 288
+  end
+end

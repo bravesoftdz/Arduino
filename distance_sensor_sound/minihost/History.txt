@@ -1,0 +1,600 @@
+1.61:
+- improved handling of MIDI inputs 
+- VSTSpy improved, now a separate thread, faster and more reliable plugin
+  scanning process
+- some SynthEdit plugins would use up 100% cpu - fixed
+- overall speed improvements
+- some tiny memory leaks fixed
+- some more bugfixes
+
+1.6:
+- improved ASIO engine with better switching between ASIO cards
+- some memory leaks fixed
+- MIDI engine improved
+- GUI resizing improved
+- fixed a bug that caused many synths to crash 
+
+1.52:
+- MIDI clock is now transmitted to the plugin and also
+  to the activated external MIDI outs
+- MIDI clock sync improved and precision now adjustable in config file
+  ("ClockSyncPrecision", range 1..8)
+- GUI resizing should now work with Vanguard *and* Wusikstation
+- MIDI timer improved - SynthEdit based plugins should now work fine
+- GUI redraw speedup
+- MIDI port config dialog now has a proper "close" button
+- MH extensions work correctly again
+
+1.51:
+- Alt-F4 to quit program does work now
+- send key input to plugin is now optional,
+  making for example reFX Claw or Vanguard
+  work correctly now
+- resizing now finally works 
+
+1.5:
+- important improvement/fix in host <> plugin communication added! 
+  This fix does finally make plugins like Groove Agent, Virtual Guitarist,
+  Broomstick Bass, DFH and several others work correctly in MiniHost!
+- improved plugin GUI resizing, fixing some issues with dynamic window  
+  sizes like in WusikStation
+- completely rewritten MIDI engine - much better MIDI timing now!
+- resource leak when closing program fixed
+- keyboard and mouse input should produce no more MIDI note hangs any more
+- MIDI playback improved
+- "MIDI channel 1 only" works correctly now
+- serious bug in bank maker fixed, should now save banks correctly
+- new panel with virtual pitch bend and modulation wheels added
+- new MIDI "hold" mode: key is held down until next "note on" for this key  
+  is received
+- when saving bank or presets and the file already exists, a warning message is 
+  displayed now
+- under certain conditions, the nag screen would be displayed several times  
+  per day - fixed now
+- MiniHost now supports sending key commands to the plugins, so you can for  
+  example now change oscillators in Wusikstation with the number keys
+
+1.12:
+- extensions should work again without crash
+- menu GUI bugfix
+- various other bugfixes
+
+1.11:
+- keyboard input in randomizer window improved
+- virtual keys behind GUI bug fixed
+- more computer keyboard bugs fixed
+- MIDI port handling improved
+
+1.10:
+- computer keyboard working correctly again
+- MIDI overflow bug fixed
+- various other small bugfixes
+
+1.09:
+- MIDI ports correctly initialized on startup now
+- registering now works without being logged in as
+  administrator
+- fixed a tiny GUI bug
+
+1.08:
+- now multiple MIDI-Ins and Outs are possible at the same time!
+- new option to toggle automatic loading of last plugin on start
+- stability of ASIO engine improved
+- plugin calls to debug breakpoints or "int 3" are intercepted and ignored
+- "Wusikstation" and "Eve" should work correctly now
+- MIDI file player timing improved
+- manual was updated
+
+1.07:
+- opening multiple WAV/MID files at once is now possible
+- preset switching improved
+- drag n' drop of multiple files now works
+- improved unloading of ASIO driver
+- preset names updated after bank load now works correctly 
+- support for removable (USB/FW) ASIO cards
+- ASIO component code optimized for AMD CPUs, thanks to
+  Christian Budde
+- support for French AZERTY computer keyboard layout 
+- manual updated
+- various other bugfixes
+
+1.06:
+- numerical input of speed values and bpm is now possible
+  by clicking on the text labels with the value
+- CC bug when preset switching fixed
+- improved color detection scheme for dark GUIs
+- new option "Generate Debug File" to assist users
+  with driver problems/crashes
+- improved display of plugins without GUI:
+  clicking anywhere in the slider area is now possible
+  to set value, more than 6 parameters can now be 
+  displayed (scrollbar), ...
+- improved naming of text labels
+- new sliders for the GUI
+- more detailed log file
+- changed order of plugin menus for better accessibility
+- CC-Mapper not shown for plugins with no parameters
+- VST-Spy scanning alorithm improved and scanned plugins
+  are now written to the log file
+- currently scanned plugin is now also the one displayed
+  in the scanning box
+- after quick scan, plugin that no longer exist will be
+  automatically removed from the list
+- scanned plugin list is saved to the correct folder now
+- ASIO info is now written to the log file when the info
+  button is pressed
+
+1.05:
+- minimum required donation for disabling the nag screen is now $15
+- plugins without GUI now have a MiniHost-style GUI, with several
+  parameters visible on screen
+- CC-Mapper included, it allows you to map any MIDI CC# to 
+  any plugin's parameter with a user-derfined range. All ranges 
+  and CCs can be defined for each parameter and each plugin and 
+  are saved as part of each plugin's settings file
+- loading of presets from plugins with chunk and parameter
+  support now works, eg. rgcAudio's Pentagon 1
+- samplerate was not transmitted correctly to plugin
+  with some ASIO drivers
+- rec button is now red, play buttons green
+- totally new way of detecting plugins, VSTSpy now integrated 
+  into MiniHost, multiple VST folders can be set, new plugins are   
+  automatically scanned and detected at startup, new menus for 
+  all plugins or only effects or only plugins, ...
+- no more hanging notes when using the shift-key to
+  transpose notes
+- dragging a plugin's GUI control with the mouse, then
+  releasing over a button of the MiniHost GUI does
+  no longer trigger that button
+- color dialog for setting user color improved,
+  computer keyboard MIDI input is disabled while dialog
+  is open, user color can now be set by entering RGB values
+- optional output limiter (saturation unit) 
+- MIDI file output limit to channel 1 works again
+- new option: prevent MIDI file from changing program/preset 
+- about dialog now centered on current screen
+- improved ASIO driver info
+- VST host and ASIO host components improved
+
+1.04:
+- plugins now sorted by their DLL name, not
+  by the name they return
+- plugins that support only processreplacing() but
+  not process() are now supported
+- bug on WAV playback with empty playlist fixed
+
+1.03:
+- nasty "crash on exit" bug fixed
+- VSTSpy list is now sorted by effect name
+- faster internal preset handling
+
+1.02:
+- VSTSpy improved
+- double-clicking on plugins in VSTSpy works again
+- better performance for demo-only plugins with
+  "no saving" message boxes like Rhino 2 or eJ
+  (preset manager window has to be closed though)
+
+1.01:
+- GalactiX working (hopefully)
+- VSTSpy does now only scan files with DLL extension
+- improved preset change behaviour
+
+1.0 final release:
+Changes since last release 1.0b5:
+
+General:
+- Manual updated to include all new features
+- support for MiniHost extensions (*.MH) that
+  provide additional functionality, the first
+  extensions will be published soon!
+
+ASIO engine:
+- ASIO conversion routines improved
+- improved setting/changing of samplerate
+- improved shutdown procedure
+
+VST host engine:
+- downmix to stereo works now, no more CPU spikes
+- increased VST compatibility
+- correct sending of tempo and PPQ/song position,
+  making Albino, Ravity, Ensembler and many other
+  PPQ dependent plugins work
+- 4Front VSTi modules are working now
+- plugins that don't support processReplacing work fine now
+- Luxonix Ravity should work fine now in MiniHost
+- VST plugins with no programs supported
+
+VSTSpy:
+- VSTSpy scanning algorithm drastically improved
+- "Load Instrument" and "Load Effect" now start
+  VSTSpy if plugins have not yet been scanned
+- no more crashes when closing MiniHost while
+  VSTSpy is still scanning
+
+GUI:
+- new GUI design ("flat style")
+- GUI color bugfixes for the menus
+- auto-skin and color scheme improvements
+- display of plugins improved for smaller screens
+- optional setting for resizable main window
+  ("ResizableMainWindow" in MiniHost.ini)
+- improved drag n' drop behaviour
+
+MID/WAV player/recorder:
+- improved MIDI/WAV file loader
+- MID and WAV playlists are now saved properly
+- new playmodes for MIDI and WAV:
+  1. stop after playback
+  2. play same file again (= old loop mode)
+  3. play next file in playlist
+  4. play random file from playlist
+- no more errors if trying to play an empty playlist
+- support for MIDI and WAV playlist files (*.MPL, *.WPL),
+  which are simple text files with the location of each file to load
+- timing of MIDI playback improved
+- tempo/position changes in MIDI player improved
+- WAV recording improved, if no filename is set,
+  it is requested on recording (this includes
+  clicking on the GUI WAV record icon)  
+- several WAV and MID files can now be opened
+  or removed in one step
+
+MIDI Tools:
+- tempo synchronisation improved
+- MIDI input options for chord maker, step sequencer and
+  gate now also available in the MIDI-Tools window
+
+Computer keyboard/virtual keys:
+- new computer keyboard controls:
+  left shift + key plays note one octave lower
+  right shift + key plays note one octave higher
+  left ctrl + key plays note a bit softer (velocity 70)
+  right ctrl + key plays note a bit louder (velocity 127)
+  default velocity is now 100
+- virtual keyboard closing bug fixed
+- resize window bug with disabled virtual keyboard fixed  
+- redrawing of virtual keyboard improved
+- keyboard settings now stored in the plugin ini file
+
+Presets:
+- preset does no longer change when bank is saved
+- preset and bank loader now in one file dialog
+- preset management improved, proper error message for
+  wrong preset files
+- preset name in title bar works again
+
+
+1.0b5:
+- samplerate setting was sometimes not transmitted correctly - fixed
+- for VST effect plugins, VST volume slider turns into dry/wet slider
+- support for mono effect and instruments
+- automatic skin color detection algorithm improved :-) 
+- NI Kontakt (and some other VSTis) should work a lot better now
+
+1.0b4:
+- new VST host component supporting latest VST 2.3 features
+- further ASIO-host component improvements by Christian Budde
+- gate syncs correctly to host tempo now
+- small GUI bugfixes
+- MIDI-input option for chord maker, sequencer and gate,
+  to (de)activate this either double-click left or
+  single-click with the middle mouse button on the
+  appropriate icon or select it from the MIDI tools menu
+
+1.0b3:
+- display of WAV recorder panel fixed
+- gate CC data is now only sent out when a note is held down
+- plugins with small GUIs are now centered on main window
+- always on top off by default
+- some minor bugfixes
+
+1.0b2:
+- added MIDI and WAV playlists
+- new MIDI tool: MIDI gate
+- bug in display of plugins that host other plugins fixed,
+  this includes Korg LegacyCell display problems
+- graphical bugfixes for the virtual keyboard
+- ASIO initialisation improved
+- new debug log options (onscreen display)
+- VU meter works better now and turns red if 0 db is reached
+- WAV-Recorder moved to new WAV/MID window
+- WAV recording can now also be in mono
+- WAV recording can be paused and continued
+- display of WAV recording time and size
+- VST-Spy stability and scanning algorithm improved
+- MIDI player improved
+- computer keyboard is pseudo-polyphonic now (again)
+- improved MIDI drag n' drop
+- closing plugin while MIDI file is playing doesn't
+  crash MiniHost anymore
+- loading of last preset works better now
+- recent plugins menu now only shows plugins who
+  still exist
+- loading a plugin now also centers the virtual keyboard
+- bug in step-sequencer fixed
+- crash/hang on exit fixed
+- MIDI player now has tempo and song position controls
+- WAV player now has position control
+
+1.0b1:
+- new GUI, with VU meter, direct preset access,
+  bypass, quick access buttons, different color
+  schemes...
+- arp/seq sync works again
+- WAV recorded improved, recorded 16 bit WAV files work
+- VST preset/bank loader improved, now supports also
+  plugins with dynamic bank sizes correctly, making
+  instruments like "Linplug Alpha" and "M42 Nebula"
+  work properly
+- VST channel downmix works again
+- some interface bugs fixed
+- main window is now centered on active monitor, not on
+  whole desktop
+- plugins without MIDI support are now handled correctly,
+  eg. "Prosoniq Morph"
+- bug in MIDI engine fixed, improved event handling
+- floating point CPU display
+- nasty step-sequencer bug found and fixed by my
+  girl friend Kuhlemuhle
+- many many more bugfixes
+
+0.9n:
+- preset randomizer improved, scripts are now saved
+  in separate files for each plugin
+- "all notes off" is sent before MIDI file is played
+- 16 bit recording improved
+- main plugin screen is centered on desktop on each new load
+- the current bank can now be saved  as a default bank for
+  each plugin separately that is loaded automatically
+- F2 to rename preset works again
+- new control panel at top of main window, with new
+  preset selector, global audio engine on/off,
+  CPU performance display and MIDI/WAV play/record
+  speed buttons
+- new plugin load menus, for instruments and effects,
+  based on the VST-Spy database
+- new option for setting VST volume
+- many many improvements/fixes, too much to mention
+
+0.9m:
+- ASIO input/output handling reworked for the
+  34285th time :-)
+- new slider for setting input volume
+- arpeggiator bugs found and fixed
+
+0.9l:
+- ASIO engine improved, channel switching bugs fixed,
+  inputs should work again
+- the status of the virtual keyboard (visible/docked,
+  CC-V and CC-H), as well as the MIDI Thru and Downmix
+  options can now be saved (automatically) in separate
+  ini files, so the host basically remembers these
+  settings for each plugin ("MiniHost_<pluginname>.ini")
+- main application window now appears centered on desktop
+
+0.9k:
+- optional status bar display
+- more bugs in the ASIO routines found!
+- ASIO input still disabled
+- more crash problems fixed
+- moved global functions to new "main" menu
+- MIDI thru was broken, now fixed
+- clicking "update" no longer deletes the bank maker's
+  preset list
+- new option to send only channel 1 of a MIDI file
+- if CPU overload is detected (>110%), MIDI playback
+  is stopped and MIDI panic is sent
+
+0.9j:
+- audio inputs have been disabled for now, working on a solution...
+- step-sequencer supports negative transpositions again
+- crash on exit after first run fixed
+- recent plugins are now only shown as plugin names, not with full path
+- channel info in incoming notes is now correctly transmitted to the plugin
+- bank maker window status is now saved
+- presets can now be copied or moved between the two windows,
+  2 selector boxes added
+- mouse wheel support for changing presets up/down
+  
+0.9i:
+- occasional crash on exit bug fixed
+- new feature: "always on top" for main window
+- fixed bug in bank manager's move up/dn method
+- WAV files of any samplerate and 8/16/20/24/32 bits,
+  floating point and integer, are now supported
+- for each file type (preset, WAV, MID, ...) last folder
+  is separately remembered
+- VST-Spy improved
+
+0.9h:
+- combined ASIO driver processing methods, many bugs fixed
+- WAV recording works again
+- WAV samples play at correct pitch now, especially
+  those with samplerate <> 44100
+- 8 bit WAV files properly supported
+- WAV pitch control added to settings dialog
+- new feature: "bank maker" to easily create a bank
+  out of several single presets
+
+0.9g:
+- arpeggiator and step-sequencer improved
+  (better note on/off behaviour)
+- computer keyboard now working normally if MIDI-Tools
+  window has the focus
+- step sequencer now also supports rests, which can be
+  entered with the "-" character
+- various controls have been added on the MIDI-Tools page
+  to allow tempo-syncing of the arpeggiator and sequencer
+  speed
+
+0.9f
+- added debugging logfile
+- support for 8 bit WAV files
+- 3 nasty ASIO bugs have finally been found!
+- state of virtual keyboard (docked/visible) is
+  now properly saved
+- new button in the ASIO settings window that
+  allows you to gather additional information
+  about the installed ASIO drivers
+
+0.9e:
+- many bugfixes
+- different event handling, now many SynthEdit
+  plugins work (eg. SuperWaveP8 or Lallapalooza)
+- different editor handling, now Atmosphere, Trilogy,
+  Stylus and all Plugsound synths should work
+- drag n' drop support for MID and WAV files
+- new feature: tempo synchronisation!
+  you can sync the tempo of the host to the current
+  tempo of the MIDI file, the estimated tempo of the
+  WAV file (4 beats assumed) and even sync to an
+  external MIDI clock signal 
+- MIDI CC on virtual keyboard work again
+
+0.9d:
+- further ASIO improvements and bugfixes
+- better arpeggiator
+- experimental CPU display in settings window
+- step-sequencer now also has octave option
+- presets can be moved up/down in preset manager's list
+- experimental "quick" menu for shortcuts/quick access
+- new hotkey: F10 to show/hide MIDI Tools
+- improved file open/save dialogs
+
+0.9c:
+- many improvements in ASIO driver
+- MIDI port setting saved properly now
+- improved closing/switching of plugins
+- stuck keys on virtual keyboard fixed
+- warning if trying to open several instances
+- VSTSpy improved
+- lots of internal bugfixes and improvements
+- donationware reminder counter decreased to 7 seconds :-)
+
+0.9:
+- dozens of bugfixes, but probably introduced some new bugs :-)
+- multichannel plugins with finally work !!!
+- completely rewritten ASIO buffer fill routine
+- many many parts of the ASIO engine changed, hopefully
+  for the better
+- new features: MIDI-Tools (arpeggiator, chord maker,
+  chord analyzer, step-sequencer)
+- better method of arranging presets in menu
+- settings windows now also displays data format of ASIO channels
+- preset name can optionally be shown in title bar
+- MIDI Thru option for plugins added, if activated, incoming
+  MIDI data (either external MIDI, file player, computer
+  keyboard or virtual keyboard) is sent to the selected
+  MIDI output as well, including all chord/arpeggiator/sequencer
+  notes
+- virtual keyboard now plays glissandi on left button,
+  chords on middle button and single notes (+CC) on
+  right button
+- new feature: VSTSpy for analyzing all VST plugins
+- added new option to downmix multichannel plugins to stereo
+- WAV playback also possible when no plugin is loaded
+- option to unload plugin back in the menu
+- last program location is now also saved and loaded
+- new shortcuts:
+  F7: trigger chord maker
+  F8: trigger arpeggiator
+  F9: trigger step sequencer
+- loading of non-VST DLLs gives a proper error message
+- some bugfixes for virtual keyboard
+- sticky notes on virtual keyboard fixed
+- you can now use the CTRL key on the virtual keyboard
+  to select held-down notes manually
+
+0.8:
+- WAV file can also be unloaded
+- many bugs related to ASIO fixed
+- new menu structure
+- improved focus of computer keyboard,
+  it should now still work when switching back from
+  other applications
+- changing buffersize in ASIO control panel
+  is now effective after clicking "ok" in control
+  panel - no need for restarting
+- improved closing of plugins
+- QWERTZ/QWERTY keyboard layouts available
+- keyboard octave setting now also accessible in the menu
+- MIDI output available, including support for VST MIDI plugins
+- MIDI input/output can also be disabled
+- improved virtual MIDI keyboard
+- virtual keyboard is now dockable to plugin GUI
+- virtual keyboard is now optionally velocity sensitive
+- virtual keyboard now displays incoming notes, no matter
+  if played on computer keyboard, from MIDI file or from
+  live MIDI input
+- drag n' drop support for fxb/fxp files and plugin DLLs
+- application allows optional parameter on command line which
+  specifies plugin to load
+- drag n' drop of DLLs files on the MiniHost.exe file in Windows Explorer
+  starts MiniHost and loads the selected plugin
+- you can now use the +/- keys to step through the presets
+- current preset is now checked in the preset list
+- presets can now be renamed by pressing F2 or choosing the rename
+  option in the preset menu
+- MIDI playback can optionally be looped
+- 2 MIDI CCs can be assigned for horizontal and vertical movement
+  on the virtual MIDI keyboard
+- WAV files are now played at correct pitch
+- new (floating) options window, it display info about the current
+  ASIO driver and allows adjusting the volume of the WAV playback,
+  overall volume and the tempo sent to the plugin
+- new hotkeys/shortcuts:
+  F1: open ASIO control panel
+  F2: rename preset
+  F3: start/stop MIDI playback
+  F4: start/stop WAV playback
+  F5: start/stop WAV recording
+  F6: trigger computer keyboard
+  F7: trigger chord maker
+  F8: trigger arpeggiator
+  F9: trigger step sequencer
+  F11: MIDI panic
+  +/-: step through the presets
+- you can now select multiple files in the preset manager
+  (using shift and ctrl keys) and save them in one go
+  as separate FXP files
+- you can now load multiple FXP files at once (by selecting
+  them with ctrl/shift in the FXP load dialog)
+  the presets will be placed in the order they were selected
+  at the current preset location
+- preset name and preset number can be read from the
+  FXP filename
+- you can drag n' drop preset from the preset manager
+  window to Windows Explorer, it will then automatically
+  create proper FXP file(s) there
+- you can also drag FXP files from any Explorer window
+  to a preset in the preset managers list, which will then
+  be loaded at the appropriate location
+- improved ASIO engine
+- added support for live ASIO inputs, but could not test
+  them yet (due to a crappy notebook soundcard)
+- randomizer with easy script language included, allows
+  you to create custom randomizers for each plugin
+- preset mutate for easy creation of variations
+
+0.7:
+- added submenu with the 10 last opened plugins
+- WAV recording enabled
+- hanging notes in Discovery and other synths fixed
+  (rewrote the event handler)
+- preset loading/saving in Vanguard should now work
+- Use PageUp/PageDn keys to change keyboard octave
+- non-chunked FXB loader fixed
+- 'Panic' now also sends 'all notes off' (CC#123)
+- added virtual MIDI keyboard for 'mouse playing'
+
+0.6:
+- key "y" works now for playing C note
+- resizing plugins supported
+- keyboard handling code improved
+- MIDI file loading and playback enabled
+- for VST instruments, WAV playback is audible as well
+- various other fixes
+
+0.5:
+- first release

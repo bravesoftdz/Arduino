@@ -1,0 +1,178 @@
+unit MBCGUI;
+
+interface
+
+uses 
+  Windows, Messages, SysUtils, Classes, Forms, DDSPBase, Graphics, DVSTModule,
+  Controls, StdCtrls, DDial;
+
+type
+  TFmMBC = class(TForm)
+    LbAbout1: TLabel;
+    LbAbout2: TLabel;
+    CBLimiter: TCheckBox;
+    RbLPFIR: TRadioButton;
+    RBBWIIR: TRadioButton;
+    SbMasterGain: TScrollBar;
+    SbLowFreq: TScrollBar;
+    SbHighFreq: TScrollBar;
+    LbMasterGain: TLabel;
+    LbCrossover: TLabel;
+    LbMasterGaindB: TLabel;
+    LbLowFreqHz: TLabel;
+    LbHighFreqHz: TLabel;
+    DlLowThreshold: TDial;
+    DlLowRatio: TDial;
+    DlLowAttack: TDial;
+    DlLowRelease: TDial;
+    DlLowGain: TDial;
+    DlMidThreshold: TDial;
+    DlMidRatio: TDial;
+    DlMidAttack: TDial;
+    DlMidRelease: TDial;
+    DlMidGain: TDial;
+    DlHighThreshold: TDial;
+    DlHighRatio: TDial;
+    DlHighAttack: TDial;
+    DlHighRelease: TDial;
+    DlHighGain: TDial;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label33: TLabel;
+    procedure FormResize(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure SbLowFreqChange(Sender: TObject);
+    procedure SbHighFreqChange(Sender: TObject);
+    procedure SbMasterGainChange(Sender: TObject);
+    procedure DlLowGainChange(Sender: TObject);
+    procedure DlLowThresholdChange(Sender: TObject);
+    procedure DlLowRatioChange(Sender: TObject);
+    procedure DlLowAttackChange(Sender: TObject);
+    procedure DlLowReleaseChange(Sender: TObject);
+  private
+    fBackground : TBitmap;
+  end;
+
+implementation
+
+{$R *.DFM}
+
+uses Math, MBCDM;
+
+procedure TFmMBC.FormCreate(Sender: TObject);
+begin
+ fBackground := TBitmap.Create;
+end;
+
+procedure TFmMBC.FormDestroy(Sender: TObject);
+begin
+ fBackground.Free;
+end;
+
+procedure TFmMBC.FormPaint(Sender: TObject);
+begin
+ Canvas.Draw(0, 0, fBackground);
+end;
+
+procedure TFmMBC.FormResize(Sender: TObject);
+var x, y : Integer;
+begin
+ with fBackground do
+  begin
+   Width := ClientWidth;
+   Height := ClientHeight;
+   for x := 0 to Width - 1 do
+    for y := 0 to Height - 1 do
+     if (x mod 2 = 0) and (y mod 2 = 0)
+      then Canvas.Pixels[X, Y] := $9BA0A2
+      else Canvas.Pixels[X, Y] := $BAC0C3;
+   Canvas.MoveTo(10, 30);
+   Canvas.LineTo(Width - 10, 30);
+   Canvas.Brush.Color := clBtnFace;
+   Canvas.Pen.Color   := $8C9091;
+   Canvas.Rectangle(20, 40, 251, 181);
+   Canvas.Rectangle(260, 40, 326, 181);
+   Canvas.Rectangle(335, 40, 401, 181);
+   Canvas.Rectangle(410, 40, 521, 181);
+   Canvas.Rectangle(530, 40, 641, 181);
+   Canvas.Rectangle(650, 40, 761, 181);
+
+   Canvas.Rectangle(20, 190, 261, 300);
+   Canvas.Rectangle(270, 190, 511, 300);
+   Canvas.Rectangle(520, 190, 761, 300);
+  end;
+end;
+
+procedure TFmMBC.DlLowGainChange(Sender: TObject);
+begin
+ (Owner as TMBCDataModule).Parameter[0] := DlLowGain.Position
+end;
+
+procedure TFmMBC.DlLowThresholdChange(Sender: TObject);
+begin
+ (Owner as TMBCDataModule).Parameter[3] := DlLowThreshold.Position;
+end;
+
+procedure TFmMBC.DlLowRatioChange(Sender: TObject);
+begin
+ (Owner as TMBCDataModule).Parameter[4] := Power(10, DlLowRatio.Position);
+end;
+
+procedure TFmMBC.DlLowAttackChange(Sender: TObject);
+begin
+ (Owner as TMBCDataModule).Parameter[5] := Power(10, DlLowAttack.Position);
+end;
+
+procedure TFmMBC.DlLowReleaseChange(Sender: TObject);
+begin
+ (Owner as TMBCDataModule).Parameter[6] := Power(10, DlLowRelease.Position);
+end;
+
+procedure TFmMBC.SbLowFreqChange(Sender: TObject);
+begin
+ (Owner as TMBCDataModule).Parameter[1] := FreqLinearToLog(SbLowFreq.Position * 0.0001);
+end;
+
+procedure TFmMBC.SbMasterGainChange(Sender: TObject);
+begin
+ LbMasterGaindB.Caption := FloatToStrF(0.1 * SbMasterGain.Position, ffGeneral, 5, 2) + 'dB';
+end;
+
+procedure TFmMBC.SbHighFreqChange(Sender: TObject);
+begin
+ (Owner as TMBCDataModule).Parameter[12] := FreqLinearToLog(SbHighFreq.Position * 0.0001);
+end;
+
+end.
